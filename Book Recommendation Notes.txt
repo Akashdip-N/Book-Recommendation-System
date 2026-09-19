@@ -1,0 +1,38 @@
+* Encoder:- Encoder is the one which is used to convert the words into word vectors.
+* Decoder:- Decoder are used to convert the word vectors back into words.
+
+Pretrained model
+
+There are two types of models:-
+    i. Encoder - Only Model:-
+        - This model is used to convert the words into word vectors.
+        - It is trained on a large corpus of text data.
+        - It can be used for various NLP tasks like text classification, sentiment analysis, etc.
+        Ex:-
+            - Word2Vec
+            - GloVe
+            - FastText
+    ii. Encoder-Decoder Model:-
+        - This model is used to convert the words into word vectors and then convert the word vectors back into words.
+        - It is trained on a large corpus of text data.
+        - It can be used for various NLP tasks like machine translation, text summarization, etc
+
+RoBERTa:-
+    - RoBERTa is a transformer-based model that is trained on a large corpus of text data.
+    - It is an improved version of BERT (Bidirectional Encoder Representations from Transformers).
+    - It uses a larger training dataset and longer training time compared to BERT.
+    - It has shown to outperform BERT on various NLP tasks like text classification, text generation, and sentiment analysis, etc.
+    - It can be used for various NLP tasks like text classification, sentiment analysis, etc.
+
+Cosine Similarity:-
+    - Cosine similarity is a measure of similarity between two non-zero vectors of an inner product space.
+    - It is defined as the cosine of the angle between the two vectors.
+    - It is used to measure the similarity between two word vectors.
+    - The value of cosine similarity ranges from -1 to 1.
+    - A value of 1 indicates that the two vectors are identical, while a value of -1 indicates that they are completely dissimilar.
+
+Text Classification:-
+    - Text classification is the process of assigning a label or category to a given text document.
+    - It is used in various NLP tasks like sentiment analysis, spam detection, topic classification, etc.
+    - It can be done using various machine learning algorithms like Naive Bayes, SVM, Random Forest, etc.
+    - It can also be done using deep learning models like CNN, RNN, LSTM, etc.
