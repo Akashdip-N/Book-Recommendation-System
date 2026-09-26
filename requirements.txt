@@ -7,3 +7,6 @@ langchain-text-splitters
 langchain-chroma
 langchain-huggingface
 sentence-transformers
+
+--find-links https://download.pytorch.org/whl/cpu
+torch
