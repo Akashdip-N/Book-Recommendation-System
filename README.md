@@ -9,24 +9,24 @@ An end-to-end Content-Based Book Recommendation Engine powered by Sentence Trans
                                   │ • Cleaning & filtering       │
                                   │ • Text feature synthesis     │
                                   └──────────────────────────────┘
-                                                │
-                                                ▼
+                                                  │
+                                                  ▼
                                   ┌──────────────────────────────┐
                                   │ 2. Text Embeddings           │
                                   │ • SentenceTransformer        │
                                   │ • Model: all-MiniLM-L6-v2    │
                                   │ • 384-d L2-norm vectors      │
                                   └──────────────────────────────┘
-                                                │
-                                                ▼
+                                                  │
+                                                  ▼
                                   ┌──────────────────────────────┐
                                   │ 3. Vector Indexing           │
                                   │ • FAISS IndexFlatIP          │
                                   │ • Cosine similarity search   │
                                   │ • Fast k-NN retrieval        │
                                   └──────────────────────────────┘
-                                                │
-                                                ▼
+                                                  │
+                                                  ▼
                                   ┌──────────────────────────────┐
                                   │ 4. Interactive App           │
                                   │ • Gradio Web UI              │
