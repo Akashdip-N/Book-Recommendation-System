@@ -101,6 +101,33 @@ LLM Course – Build a Semantic Book Recommender (Python, OpenAI, LangChain, Gra
 Click the image below to watch the full course tutorial:
 [![LLM Course – Build a Semantic Book Recommender](https://img.youtube.com/vi/Q7mS1VHm3Yw/maxresdefault.jpg)](https://www.youtube.com/watch?v=Q7mS1VHm3Yw "LLM Course – Build a Semantic Book Recommender")
 
+## 🚀 Production Deployment & Optimization (Render Hosting)
+
+To successfully host this application on **Render's Free Tier (512 MB RAM limit)** without triggering Out-Of-Memory (OOM) crashes or build timeouts, the following architectural optimizations were applied:
+
+### 1. Offloaded Model Embeddings to Serverless API
+* **Problem:** Running PyTorch and loading `sentence-transformers/all-MiniLM-L6-v2` locally inside the container consumed ~600–800 MB RAM during initialization, exceeding Render's 512 MB memory limit.
+* **Solution:** Replaced local `HuggingFaceEmbeddings` with `HuggingFaceEndpointEmbeddings` (`langchain_huggingface`) to offload vector generation to Hugging Face's Serverless Inference API via HTTP.
+* **Impact:** Reduced overall RAM footprint from **~800 MB down to ~150 MB**, eliminating OOM crashes.
+
+### 2. Lightweight PyTorch-Free Dependency Tree
+* **Problem:** Standard `pip install torch` downloads GPU/CUDA binaries, inflating the build size and container startup overhead.
+* **Solution:** Removed `torch` from `requirements.txt` entirely, keeping only API-based clients (`langchain-huggingface`, `langchain-chroma`, `gradio`, `pandas`).
+* **Impact:** Dramatically accelerated build times and eliminated PyTorch C++ binding allocations in memory.
+
+### 3. Dynamic Network Port Binding
+* **Problem:** Hardcoded port allocations (e.g., `7860`) cause health check failures on Render, which dynamically assigns a host port at container boot.
+* **Solution:** Updated `dashboard.launch()` to bind dynamically to `0.0.0.0` and read the `PORT` environment variable injected by Render:
+  ```python
+  port = int(os.environ.get("PORT", 7860))
+  dashboard.launch(server_name="0.0.0.0", server_port=port)
+
+## 💻 View the Project Live
+
+You can view the live version of this project at [Book Recommendation System](https://book-recommendation-system-x23e.onrender.com/).
+
+📝 A small note: Since the application's backend is hosted using the free tier of Vercel, it might take one or two minutes to wake up. Sorry for the inconvenience caused.
+
 ## 📄 License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
