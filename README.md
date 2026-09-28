@@ -70,7 +70,33 @@ git clone https://github.com/Akashdip-N/Book-Recommendation-System.git
 cd book-recommendation-system
 pip install -r requirements.txt
 ```
-### 3️⃣ Usage & Pipeline Execution 🔄
+
+## 3️⃣ Environment Configuration 🔑
+
+The application requires API credentials for Kaggle (dataset downloading) and Hugging Face (vector inference).
+
+A template file named `.env.sample` is included in the root directory:
+
+```env
+KAGGLE_API_TOKEN=<KAGGLE_API_TOKEN>
+HF_TOKEN=<Huginface_API_Token>
+```
+
+### Setup Instructions
+- Create your .env file:
+Copy the sample file to create your local .env configuration:
+
+```bash
+cp .env.sample .env
+```
+- Add your API credentials:
+Open .env and fill in your actual API keys:
+
+  - ```KAGGLE_API_TOKEN```: Your Kaggle API token/key, which can be obtained from your [Kaggle](https://www.kaggle.com/settings) account settings (Account > API > Create New API Token).
+
+  - ```HF_TOKEN```: Your Hugging Face User Access Token, which can be generated from your [Hugging Face](https://huggingface.co/settings/tokens) account settings (Access Tokens > New Token).
+
+### 4️⃣ Usage & Pipeline Execution 🔄
 #### Running the Notebooks 📓
 To run the full end-to-end processing pipeline, execute the notebooks in the following sequential order:
 1. `data-exploration.ipynb`: Downloads the dataset from Kaggle, performs exploratory data analysis (EDA), and cleans text data.
@@ -78,7 +104,7 @@ To run the full end-to-end processing pipeline, execute the notebooks in the fol
 3. `text-classification.ipynb`: Performs zero-shot text classification to categorize books into "Fiction" vs. "Non-fiction" filters.
 4. `sentiment-analysis.ipynb`: Evaluates the emotional tone and sentiment of each book description (e.g., joyful, suspenseful, sad).
 
-### 4️⃣ To start the Gradio app:
+### 5️⃣ To start the Gradio app:
 ```bash
 python dashboard.py
 ```
